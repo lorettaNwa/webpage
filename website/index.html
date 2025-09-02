@@ -1,0 +1,2423 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loretta Nwajiaku - Creative Developer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #0a0a0a;
+        color: #ffffff;
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      /* Background animations */
+      .bg-shapes {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+      }
+
+      .shape {
+        position: absolute;
+        background: linear-gradient(
+          45deg,
+          rgba(255, 107, 107, 0.1),
+          rgba(78, 205, 196, 0.1)
+        );
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .shape:nth-child(1) {
+        width: 200px;
+        height: 200px;
+        top: 20%;
+        left: 10%;
+        border-radius: 50%;
+        animation-delay: 0s;
+      }
+
+      .shape:nth-child(2) {
+        width: 150px;
+        height: 150px;
+        top: 60%;
+        right: 15%;
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        animation-delay: 2s;
+      }
+
+      .shape:nth-child(3) {
+        width: 100px;
+        height: 100px;
+        bottom: 20%;
+        left: 20%;
+        transform: rotate(45deg);
+        animation-delay: 4s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-30px) rotate(180deg);
+        }
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        padding: 30px 50px;
+        background: rgba(10, 10, 10, 0.9);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255, 107, 107, 0.2);
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 800;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 40px;
+      }
+
+      .nav-links a {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 500;
+        position: relative;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 14px;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after,
+      .nav-links a.active::after {
+        width: 100%;
+      }
+
+      .nav-toggle {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+      }
+
+      .nav-toggle span {
+        width: 25px;
+        height: 3px;
+        background: #ffffff;
+        margin: 3px 0;
+        transition: 0.3s;
+        border-radius: 2px;
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        padding: 0 50px;
+        gap: 100px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .hero-text {
+        animation: slideInLeft 1s ease-out;
+      }
+
+      .hero-visual {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: slideInRight 1s ease-out;
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-100px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(100px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 8vw, 8rem);
+        font-weight: 900;
+        line-height: 0.9;
+        margin-bottom: 30px;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-transform: uppercase;
+        letter-spacing: -3px;
+      }
+
+      .hero-subtitle {
+        font-size: 1.5rem;
+        color: #888;
+        margin-bottom: 40px;
+        font-weight: 300;
+      }
+
+      .hero-description {
+        font-size: 1.1rem;
+        color: #ccc;
+        margin-bottom: 50px;
+        line-height: 1.8;
+        max-width: 500px;
+      }
+
+      .cta-group {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .cta-primary {
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        color: white;
+        padding: 18px 40px;
+        border: none;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 14px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-primary::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .cta-primary:hover::before {
+        left: 100%;
+      }
+
+      .cta-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 40px rgba(255, 107, 107, 0.3);
+      }
+
+      .cta-secondary {
+        background: transparent;
+        border: 2px solid #4ecdc4;
+        color: #4ecdc4;
+      }
+
+      .cta-secondary:hover {
+        background: #4ecdc4;
+        color: #0a0a0a;
+        box-shadow: 0 20px 40px rgba(78, 205, 196, 0.3);
+      }
+
+      .profile-container {
+        position: relative;
+        width: 400px;
+        height: 400px;
+      }
+
+      .profile-main {
+        width: 300px;
+        height: 300px;
+        border-radius: 30px;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 5rem;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        transform: rotate(-5deg);
+      }
+
+      .profile-main:hover {
+        transform: rotate(0deg) scale(1.05);
+      }
+
+      .profile-main input[type="file"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      .profile-main img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 30px;
+      }
+
+      .profile-accent {
+        position: absolute;
+        top: 50px;
+        right: 0;
+        width: 150px;
+        height: 150px;
+        background: linear-gradient(45deg, #4ecdc4, #45b7d1);
+        border-radius: 50%;
+        z-index: -1;
+        animation: pulse 3s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.7;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.9;
+        }
+      }
+
+      /* Sections */
+      section {
+        padding: 120px 50px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 80px;
+      }
+
+      .section-number {
+        font-size: 1rem;
+        color: #ff6b6b;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: 20px;
+      }
+
+      .section-title {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 800;
+        margin-bottom: 30px;
+        background: linear-gradient(45deg, #ffffff, #cccccc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .section-description {
+        font-size: 1.2rem;
+        color: #888;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.8;
+      }
+
+      /* About Section */
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+
+      .about-text {
+        font-size: 1.1rem;
+        color: #ccc;
+        line-height: 1.8;
+        margin-bottom: 40px;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+
+      .stat-item {
+        text-align: center;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 107, 107, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .stat-item:hover {
+        transform: translateY(-10px);
+        background: rgba(255, 107, 107, 0.1);
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 800;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 10px;
+      }
+
+      .stat-label {
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.9rem;
+      }
+
+      .about-visual {
+        position: relative;
+        height: 500px;
+      }
+
+      .visual-element {
+        position: absolute;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        border-radius: 20px;
+        animation: float 4s ease-in-out infinite;
+      }
+
+      .visual-element:nth-child(1) {
+        width: 200px;
+        height: 200px;
+        top: 0;
+        left: 0;
+        animation-delay: 0s;
+      }
+
+      .visual-element:nth-child(2) {
+        width: 150px;
+        height: 150px;
+        top: 100px;
+        right: 50px;
+        border-radius: 50%;
+        animation-delay: 1s;
+      }
+
+      .visual-element:nth-child(3) {
+        width: 100px;
+        height: 100px;
+        bottom: 50px;
+        left: 100px;
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        animation-delay: 2s;
+      }
+
+      /* Skills Section */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        margin-top: 60px;
+      }
+
+      .skill-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 107, 107, 0.2);
+        border-radius: 30px;
+        padding: 50px 40px;
+        text-align: center;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .skill-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 107, 107, 0.1),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .skill-card:hover::before {
+        left: 100%;
+      }
+
+      .skill-card:hover {
+        transform: translateY(-15px);
+        border-color: #ff6b6b;
+        background: rgba(255, 107, 107, 0.1);
+      }
+
+      .skill-icon {
+        font-size: 4rem;
+        margin-bottom: 30px;
+        display: block;
+      }
+
+      .skill-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #ffffff;
+      }
+
+      .skill-description {
+        color: #888;
+        line-height: 1.6;
+      }
+
+      /* Projects Section - FIXED CAROUSEL STYLES */
+      .projects-carousel {
+        margin-top: 60px;
+      }
+
+      .carousel-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 20px;
+        cursor: grab;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .carousel-container:active {
+        cursor: grabbing;
+      }
+
+      .carousel-wrapper {
+        display: flex;
+        transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        gap: 25px;
+        padding: 0 10px;
+      }
+
+      .carousel-slide {
+        min-width: 280px;
+        max-width: 280px;
+        flex-shrink: 0;
+      }
+
+      .carousel-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: none;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 18px;
+        transition: all 0.3s ease;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .carousel-nav:hover {
+        background: rgba(255, 107, 107, 0.8);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .carousel-nav.prev {
+        left: 20px;
+      }
+
+      .carousel-nav.next {
+        right: 20px;
+      }
+
+      .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 30px;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .dot.active {
+        background: #ff6b6b;
+        transform: scale(1.2);
+      }
+
+      .dot:hover {
+        background: rgba(255, 107, 107, 0.7);
+      }
+
+      .project-card {
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 30px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        color: inherit;
+        border: 1px solid rgba(78, 205, 196, 0.2);
+        position: relative;
+        display: block;
+        height: 100%;
+      }
+
+      .project-card:hover {
+        transform: translateY(-20px) scale(1.02);
+        border-color: #4ecdc4;
+        box-shadow: 0 30px 60px rgba(78, 205, 196, 0.2);
+      }
+
+      .project-image {
+        height: 200px;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .project-content {
+        padding: 25px;
+      }
+
+      .project-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: #ffffff;
+        line-height: 1.3;
+      }
+
+      .project-description {
+        color: #888;
+        line-height: 1.5;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+      }
+
+      .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .tech-tag {
+        background: rgba(255, 107, 107, 0.2);
+        color: #ff6b6b;
+        padding: 4px 12px;
+        border-radius: 15px;
+        font-size: 0.75rem;
+        font-weight: 500;
+      }
+
+      /* Contact Section */
+      .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        margin-top: 60px;
+      }
+
+      .contact-info h3 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 30px;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .contact-info p {
+        color: #888;
+        margin-bottom: 40px;
+        line-height: 1.8;
+        font-size: 1.1rem;
+      }
+
+      .contact-links {
+        display: grid;
+        gap: 20px;
+        max-width: 600px;
+      }
+
+      .contact-link {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        text-decoration: none;
+        color: white;
+        transition: all 0.3s ease;
+      }
+
+      .contact-link:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .contact-link i {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .contact-link svg {
+        width: 28px;
+        height: 28px;
+        fill: white;
+        transition: fill 0.3s ease;
+      }
+
+      .contact-link:hover svg {
+        fill: #ffffff;
+      }
+
+      .contact-link div {
+        flex: 1;
+      }
+
+      .contact-link strong {
+        font-size: 16px;
+        display: block;
+        margin-bottom: 2px;
+      }
+
+      .contact-link br + text {
+        opacity: 0.8;
+        font-size: 14px;
+      }
+
+      /* Platform-specific hover colors */
+      .linkedin:hover svg {
+        fill: #0077b5;
+      }
+      .github:hover svg {
+        fill: #333;
+      }
+      .twitter:hover svg {
+        fill: #1da1f2;
+      }
+      .instagram:hover svg {
+        fill: #e4405f;
+      }
+
+      .contact-form {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 30px;
+        padding: 50px;
+        border: 1px solid rgba(255, 107, 107, 0.2);
+      }
+
+      .form-group {
+        margin-bottom: 30px;
+      }
+
+      .form-group label {
+        display: block;
+        color: #ffffff;
+        margin-bottom: 10px;
+        font-weight: 600;
+        font-size: 1rem;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 18px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        color: #ffffff;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        font-family: inherit;
+      }
+
+      .form-group input::placeholder,
+      .form-group textarea::placeholder {
+        color: #666;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #ff6b6b;
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 18px;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        border: none;
+        border-radius: 15px;
+        color: white;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 40px rgba(255, 107, 107, 0.3);
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 50px;
+        border-top: 1px solid rgba(255, 107, 107, 0.2);
+        color: #888;
+      }
+
+      /* CV Modal */
+      .cv-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .cv-modal.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .cv-content {
+        background: #ffffff;
+        color: #333;
+        width: 90%;
+        max-width: 800px;
+        max-height: 90vh;
+        border-radius: 20px;
+        overflow-y: auto;
+        position: relative;
+        animation: slideInUp 0.3s ease;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer 10+ */
+      }
+
+      .cv-content::-webkit-scrollbar {
+        display: none; /* Safari and Chrome */
+      }
+
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .cv-header {
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        color: white;
+        padding: 30px 40px;
+        text-align: center;
+        position: relative;
+      }
+
+      .cv-close {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+        font-size: 24px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .cv-close:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+      }
+
+      .cv-body {
+        padding: 40px;
+        line-height: 1.6;
+      }
+
+      .cv-section {
+        margin-bottom: 40px;
+      }
+
+      .cv-section h3 {
+        color: #ff6b6b;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .cv-section h3::before {
+        content: "";
+        width: 4px;
+        height: 30px;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        border-radius: 2px;
+      }
+
+      .cv-item {
+        margin-bottom: 25px;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        border-left: 4px solid #ff6b6b;
+      }
+
+      .cv-item h4 {
+        color: #333;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .cv-item .company {
+        color: #4ecdc4;
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+
+      .cv-item .date {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+      }
+
+      .cv-item ul {
+        color: #555;
+        padding-left: 20px;
+      }
+
+      .cv-item ul li {
+        margin-bottom: 5px;
+      }
+
+      .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .skill-tag {
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .cv-download-btn {
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 25px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 20px;
+      }
+
+      .cv-download-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1024px) {
+        .carousel-slide {
+          min-width: 260px;
+          max-width: 260px;
+        }
+
+        .carousel-wrapper {
+          gap: 20px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          padding: 20px 30px;
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 100%;
+          height: 100vh;
+          background: rgba(10, 10, 10, 0.95);
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          transition: right 0.3s ease;
+        }
+
+        .nav-links.active {
+          right: 0;
+        }
+
+        .nav-toggle {
+          display: flex;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+          text-align: center;
+          padding: 100px 30px 50px;
+          gap: 50px;
+        }
+
+        .hero-text {
+          order: 2;
+        }
+
+        .hero-visual {
+          order: 1;
+        }
+
+        .profile-container {
+          width: 300px;
+          height: 300px;
+        }
+
+        .profile-main {
+          width: 250px;
+          height: 250px;
+        }
+
+        section {
+          padding: 80px 30px;
+        }
+
+        .about-content,
+        .contact-container {
+          grid-template-columns: 1fr;
+          gap: 50px;
+        }
+
+        .cta-group {
+          justify-content: center;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .carousel-slide {
+          min-width: 280px;
+          max-width: 280px;
+        }
+
+        .carousel-wrapper {
+          gap: 15px;
+          padding: 0 5px;
+        }
+
+        .carousel-container {
+          max-width: 320px;
+        }
+
+        .carousel-nav {
+          width: 40px;
+          height: 40px;
+          font-size: 16px;
+        }
+
+        .carousel-nav.prev {
+          left: 10px;
+        }
+
+        .carousel-nav.next {
+          right: 10px;
+        }
+
+        .cv-content {
+          width: 95%;
+          max-height: 95vh;
+        }
+
+        .cv-header {
+          padding: 20px 25px;
+        }
+
+        .cv-body {
+          padding: 25px 20px;
+        }
+
+        .cv-section h3 {
+          font-size: 1.3rem;
+        }
+
+        .skills-list {
+          gap: 8px;
+        }
+
+        .skill-tag {
+          font-size: 0.8rem;
+          padding: 6px 12px;
+        }
+      }
+
+      /* Scroll animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.6s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-shapes">
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+
+    <nav>
+      <div class="nav-container">
+        <div class="logo">CLN</div>
+        <ul class="nav-links">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li>
+            <a
+              href="#"
+              onclick="openCV(event)"
+              style="
+                background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+                color: white;
+                border-radius: 25px;
+                padding: 8px 20px;
+              "
+              >📄 CV</a
+            >
+          </li>
+        </ul>
+        <div class="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero" id="home">
+      <div class="hero-text">
+        <h1>Geographer<br />& Developer</h1>
+        <p class="hero-subtitle">
+          PhD Student in Geographic Information Science
+        </p>
+        <p class="hero-description">
+          I research and develop innovative web applications that bridge
+          geography, technology, and education. Specializing in
+          geovisualization, migration studies, and interactive mapping for
+          teaching and research.
+        </p>
+        <div class="cta-group">
+          <a href="#projects" class="cta-primary">View Work</a>
+          <a href="#" onclick="openCV(event)" class="cta-primary cta-secondary">
+            📄 View CV
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="profile-container">
+          <div class="profile-main" id="profileImage">
+            <span style="font-size: 5rem">👨‍💻</span>
+            <input type="file" id="imageUpload" accept="image/*" />
+          </div>
+          <div class="profile-accent"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="fade-in">
+      <div class="section-header">
+        <div class="section-number">01. About</div>
+        <h2 class="section-title">Who I Am</h2>
+        <p class="section-description">
+          A passionate creative with a love for clean code and beautiful design
+        </p>
+      </div>
+      <div class="about-content">
+        <div>
+          <p class="about-text">
+            I'm a PhD student in Geography at the University of Iowa,
+            specializing in Cartography and Geographic Information Science. With
+            a background in GIScience, geovisualization, and migration studies,
+            I develop innovative web-based applications for teaching and
+            research. My work bridges geography, technology, and education to
+            create meaningful digital experiences that help people understand
+            complex spatial patterns and historical narratives.
+          </p>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-number">PhD</div>
+              <div class="stat-label">Student in Geography</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">3.92</div>
+              <div class="stat-label">GPA at University of Iowa</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">3+</div>
+              <div class="stat-label">Years Research Experience</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">Multiple</div>
+              <div class="stat-label">Publications & Presentations</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-visual">
+          <div class="visual-element"></div>
+          <div class="visual-element"></div>
+          <div class="visual-element"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="fade-in">
+      <div class="section-header">
+        <div class="section-number">02. Skills</div>
+        <h2 class="section-title">What I Do</h2>
+        <p class="section-description">
+          Combining technical expertise with creative vision to deliver
+          exceptional results
+        </p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <span class="skill-icon">🗺️</span>
+          <h3 class="skill-title">GIS & Cartography</h3>
+          <p class="skill-description">
+            Expert in ArcGIS Pro, QGIS, and web mapping technologies for
+            creating interactive maps and spatial data analysis.
+          </p>
+        </div>
+        <div class="skill-card">
+          <span class="skill-icon">📊</span>
+          <h3 class="skill-title">Data Visualization</h3>
+          <p class="skill-description">
+            Creating compelling visual narratives from complex spatial and
+            demographic data using modern web technologies and GIS tools.
+          </p>
+        </div>
+        <div class="skill-card">
+          <span class="skill-icon">💻</span>
+          <h3 class="skill-title">
+            Software Development and Databse Management
+          </h3>
+          <p class="skill-description">
+            Building interactive web applications using JavaScript, Python, and
+            modern frameworks for research and educational purposes. Use of
+            Database systems.
+          </p>
+        </div>
+        <div class="skill-card">
+          <span class="skill-icon">🔬</span>
+          <h3 class="skill-title">Research & Analysis</h3>
+          <p class="skill-description">
+            Conducting spatial analysis and migration research with a focus on
+            health geography, food security, and demographic patterns.
+          </p>
+        </div>
+        <div class="skill-card">
+          <span class="skill-icon">🔬</span>
+          <h3 class="skill-title">DevOps</h3>
+          <p class="skill-description">
+            Automated deployment pipeline for software applications using
+            Docker, CI/CD, and cloud infrastructure for research projects..
+          </p>
+        </div>
+        <div class="skill-card">
+          <span class="skill-icon">🔬</span>
+          <h3 class="skill-title">Server Management</h3>
+          <p class="skill-description">
+            Management of Linux and Windows servers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FIXED PROJECTS SECTION WITH PROPER CAROUSEL -->
+    <section id="projects" class="fade-in">
+      <div class="section-header">
+        <div class="section-number">03. Projects</div>
+        <h2 class="section-title">Recent Work</h2>
+        <p class="section-description">
+          A selection of projects that showcase my skills and creativity
+        </p>
+      </div>
+
+      <div class="projects-carousel">
+        <div class="carousel-container">
+          <div class="carousel-wrapper" id="carouselWrapper">
+            <!-- Project 1: Roots & Migrants -->
+            <div class="carousel-slide">
+              <a
+                href="https://geosocial.geography.uiowa.edu/rootsmigrants/"
+                target="_blank"
+                class="project-card"
+              >
+                <div class="project-image">
+                  <img
+                    src="Roots.png"
+                    alt="Roots & Migrants"
+                    style="width: 100%; height: 100%; object-fit: cover"
+                  />
+                </div>
+                <div class="project-content">
+                  <h3 class="project-title">Roots & Migrants</h3>
+                  <p class="project-description">
+                    A user-centered story map application for teaching and
+                    learning historical population dynamics in the United
+                    States.
+                  </p>
+                  <div class="project-tech">
+                    <span class="tech-tag">WebGIS</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Webgl</span>
+                    <span class="tech-tag">Story Maps</span>
+                    <span class="tech-tag">Maplibre</span>
+                    <span class="tech-tag">D3.js</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Project 2: Graduated Symbol -->
+            <div class="carousel-slide">
+              <a
+                href="https://observablehq.com/d/142e587200d62063"
+                target="_blank"
+                class="project-card"
+              >
+                <div class="project-image">
+                  <img
+                    src="Graduated.png"
+                    alt="Roots & Migrants"
+                    style="width: 100%; height: 100%; object-fit: cover"
+                  />
+                </div>
+                <div class="project-content">
+                  <h3 class="project-title">Graduated Symbol Mapping</h3>
+                  <p class="project-description">
+                    This map shows the population size of Nebraska by counties
+                    using a graduated symbol map.
+                  </p>
+                  <div class="project-tech">
+                    <span class="tech-tag">Observable</span>
+                    <span class="tech-tag">D3.js</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Project 3: Population Change -->
+            <div class="carousel-slide">
+              <a
+                href="https://observablehq.com/d/9b0cb68780f86aff"
+                target="_blank"
+                class="project-card"
+              >
+                <div class="project-image">
+                  <img
+                    src="Change.png"
+                    alt="Roots & Migrants"
+                    style="width: 100%; height: 100%; object-fit: cover"
+                  />
+                </div>
+                <div class="project-content">
+                  <h3 class="project-title">Population Change</h3>
+                  <p class="project-description">
+                    This choropleth map shows the percentage population change
+                    or growth in Nebraska from 2010-2024.
+                  </p>
+                  <div class="project-tech">
+                    <span class="tech-tag">Observable</span>
+                    <span class="tech-tag">Cartography</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Project 4: Bivariate -->
+            <div class="carousel-slide">
+              <a
+                href="https://observablehq.com/d/1f061b7e86f05a9c"
+                target="_blank"
+                class="project-card"
+              >
+                <div class="project-image">
+                  <img
+                    src="Bivariate.png"
+                    alt="Roots & Migrants"
+                    style="width: 100%; height: 100%; object-fit: cover"
+                  />
+                </div>
+                <div class="project-content">
+                  <h3 class="project-title">Bivariate Mapping</h3>
+                  <p class="project-description">
+                    A bivariate map of Nebraska showing the relationship between
+                    population density and percentage of land owners occupying
+                    their houses.
+                  </p>
+                  <div class="project-tech">
+                    <span class="tech-tag">Observable</span>
+                    <span class="tech-tag">Statistical Analysis</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Project 5: Isarithmic -->
+            <div class="carousel-slide">
+              <a
+                href="https://observablehq.com/d/d8f0c13ae4e341b5"
+                target="_blank"
+                class="project-card"
+              >
+                <div class="project-image">
+                  <img
+                    src="Isa.png"
+                    alt="Roots & Migrants"
+                    style="width: 100%; height: 100%; object-fit: cover"
+                  />
+                </div>
+                <div class="project-content">
+                  <h3 class="project-title">Isarithmic Mapping</h3>
+                  <p class="project-description">
+                    This is an isarithmic map that display the yearly total
+                    precipitation across Iowa.
+                  </p>
+                  <div class="project-tech">
+                    <span class="tech-tag">Observable</span>
+                    <span class="tech-tag">Precipitation Data</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Project 6: Flow Map -->
+            <div class="carousel-slide">
+              <a
+                href="https://lorettanwaj.github.io/Porfolio/FlowMap.html"
+                target="_blank"
+                class="project-card"
+              >
+                <div class="project-image">
+                  <img
+                    src="Nigeria.png"
+                    alt="Roots & Migrants"
+                    style="width: 100%; height: 100%; object-fit: cover"
+                  />
+                </div>
+                <div class="project-content">
+                  <h3 class="project-title">Flow Mapping</h3>
+                  <p class="project-description">
+                    This is a flow map of 5-year Internal Migration in Nigeria
+                    made using Flowmapper.org.
+                  </p>
+                  <div class="project-tech">
+                    <span class="tech-tag">Flowmapper.org</span>
+                    <span class="tech-tag">Migration Data</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Project 7: Geovisual Analytics -->
+            <div class="carousel-slide">
+              <a
+                href="https://lorettanwaj.github.io/Porfolio/smallmultiples/"
+                target="_blank"
+                class="project-card"
+              >
+                <div class="project-image">
+                  <img
+                    src="Geoviz.png"
+                    alt="Roots & Migrants"
+                    style="width: 100%; height: 100%; object-fit: cover"
+                  />
+                </div>
+                <div class="project-content">
+                  <h3 class="project-title">Geovisual Analytics</h3>
+                  <p class="project-description">
+                    This is a dynamically linked map showing the relationship
+                    between Lifestyle factors and Health status in California.
+                  </p>
+                  <div class="project-tech">
+                    <span class="tech-tag">Observable</span>
+                    <span class="tech-tag">Interactive</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Project 8: Cartographic Portfolio -->
+            <div class="carousel-slide">
+              <a
+                href="https://observablehq.com/d/24ac4f4bfb6fe822"
+                target="_blank"
+                class="project-card"
+              >
+                <div class="project-image">
+                  <img
+                    src="Inflow.png"
+                    alt="Roots & Migrants"
+                    style="width: 100%; height: 100%; object-fit: cover"
+                  />
+                </div>
+                <div class="project-content">
+                  <h3 class="project-title">Migration Inflow</h3>
+                  <p class="project-description">
+                    This map shows the total inflows of migrant families in the
+                    United States(1650-1969).
+                  </p>
+                  <div class="project-tech">
+                    <span class="tech-tag">Observable</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Project 9: Land Use Analysis -->
+            <div class="carousel-slide">
+              <a
+                href="https://observablehq.com/d/e73482da7216f406"
+                target="_blank"
+                class="project-card"
+              >
+                <div class="project-image">
+                  <img
+                    src="Outflow.png"
+                    alt="Roots & Migrants"
+                    style="width: 100%; height: 100%; object-fit: cover"
+                  />
+                </div>
+                <div class="project-content">
+                  <h3 class="project-title">Migration Outflow</h3>
+                  <p class="project-description">
+                    A graduated symbol map showing the total outflows of migrant
+                    families in the United States(1650-1969)
+                  </p>
+                  <div class="project-tech">
+                    <span class="tech-tag">Observable</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Project 10: DevOps -->
+            <div class="carousel-slide">
+              <a
+                href="https://github.com/lorettaNwaj/devops-automation"
+                target="_blank"
+                class="project-card"
+              >
+                <div class="project-image">⚙️</div>
+                <div class="project-content">
+                  <h3 class="project-title">GIS DevOps Pipeline</h3>
+                  <p class="project-description">
+                    Automated deployment pipeline for GIS applications using
+                    Docker, CI/CD, and cloud infrastructure for research
+                    projects.
+                  </p>
+                  <div class="project-tech">
+                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">CI/CD</span>
+                    <span class="tech-tag">Cloud Computing</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <button class="carousel-nav prev" onclick="changeSlide(-1)">❮</button>
+          <button class="carousel-nav next" onclick="changeSlide(1)">❯</button>
+        </div>
+
+        <div class="carousel-dots" id="carouselDots"></div>
+      </div>
+    </section>
+
+    <section id="contact" class="fade-in">
+      <div class="section-header">
+        <div class="section-number">04. Contact</div>
+        <h2 class="section-title">Let's Work Together</h2>
+        <p class="section-description">
+          Ready to bring your ideas to life? Let's create something amazing
+          together.
+        </p>
+      </div>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Get In Touch</h3>
+          <p>
+            I'm always open to discussing new opportunities, interesting
+            projects, or just having a friendly chat about design and
+            development.
+          </p>
+          <div class="contact-links">
+            <a
+              href="https://www.linkedin.com/in/loretta-nwajiaku-907100168/"
+              target="_blank"
+              class="contact-link linkedin"
+            >
+              <i>
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                  />
+                </svg>
+              </i>
+              <div>
+                <strong>LinkedIn</strong>
+                <span>Loretta Nwajiaku</span>
+              </div>
+            </a>
+
+            <a
+              href="https://github.com/lorettaNwaj"
+              target="_blank"
+              class="contact-link github"
+            >
+              <i>
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                  />
+                </svg>
+              </i>
+              <div>
+                <strong>GitHub</strong>
+                <span>@lorettaNwaj</span>
+              </div>
+            </a>
+
+            <a
+              href="https://twitter.com/EtLorry"
+              target="_blank"
+              class="contact-link twitter"
+            >
+              <i>
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                  />
+                </svg>
+              </i>
+              <div>
+                <strong>Twitter</strong>
+                <span>@EtLorry</span>
+              </div>
+            </a>
+
+            <a
+              href="https://www.instagram.com/sincerely_loretta/"
+              target="_blank"
+              class="contact-link instagram"
+            >
+              <i>
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                  />
+                </svg>
+              </i>
+              <div>
+                <strong>Instagram</strong>
+                <span>@sincerely_loretta</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form action="https://formspree.io/f/mblaanny" method="POST">
+            <input type="hidden" name="_next" value="thanks.html" />
+
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your Name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="your@email.com"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                placeholder="Project Inquiry"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Tell me about your project..."
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- CV Modal -->
+    <div class="cv-modal" id="cvModal">
+      <div class="cv-content">
+        <div class="cv-header">
+          <button class="cv-close" onclick="closeCV()">×</button>
+          <h2 style="margin: 0; font-size: 2rem">Nwajiaku, Chiamaka Loretta</h2>
+          <p style="margin: 10px 0 0 0; opacity: 0.9">
+            Geography PhD Student & Research Assistant
+          </p>
+        </div>
+        <div class="cv-body">
+          <!-- Research Interests -->
+          <div class="cv-section">
+            <h3>🔬 Research Interests</h3>
+            <div class="cv-item">
+              <div class="skills-list">
+                <span class="skill-tag">GIScience</span>
+                <span class="skill-tag">Geovisualization</span>
+                <span class="skill-tag">Migration</span>
+                <span class="skill-tag">Health Geography</span>
+                <span class="skill-tag">Food Security</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education -->
+          <div class="cv-section">
+            <h3>🎓 Education</h3>
+
+            <div class="cv-item">
+              <h4>
+                Ph.D. Geography (Cartography and Geographic Information Science)
+              </h4>
+              <p class="company">University of Iowa</p>
+              <p class="date">Expected May 2029</p>
+              <ul>
+                <li>CGPA: 3.92/4.00</li>
+                <li>Focus on Cartography and Geographic Information Science</li>
+              </ul>
+            </div>
+
+            <div class="cv-item">
+              <h4>
+                M.A. Geography (Cartography and Geographic Information Science)
+              </h4>
+              <p class="company">University of Iowa</p>
+              <p class="date">August 2023 - May 2025</p>
+              <ul>
+                <li>CGPA: 3.92/4.00</li>
+                <li>
+                  Specialization in Cartography and Geographic Information
+                  Science
+                </li>
+              </ul>
+            </div>
+
+            <div class="cv-item">
+              <h4>Interdisciplinary Graduate Certificate in Informatics</h4>
+              <p class="company">University of Iowa</p>
+              <p class="date">Expected May 2026</p>
+            </div>
+
+            <div class="cv-item">
+              <h4>B.Sc. Geography and Planning</h4>
+              <p class="company">University of Lagos, Nigeria</p>
+              <p class="date">December 2016 - 2020</p>
+              <ul>
+                <li>First Class Honors - CGPA: 4.71/5.00</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Work Experience -->
+          <div class="cv-section">
+            <h3>💼 Work Experience</h3>
+
+            <div class="cv-item">
+              <h4>Research and Teaching Assistant</h4>
+              <p class="company">
+                Department of Geographical and Sustainability Sciences,
+                University of Iowa
+              </p>
+              <p class="date">August 2023 - Present</p>
+              <ul>
+                <li>
+                  Developed a webGIS application for teaching US history,
+                  demography and migration patterns
+                </li>
+                <li>
+                  Created Roots & Migrants project:
+                  <a
+                    href="https://geosocial.geography.uiowa.edu/rootsmigrants/"
+                    target="_blank"
+                    style="color: #4ecdc4"
+                    >geosocial.geography.uiowa.edu/rootsmigrants/</a
+                  >
+                </li>
+                <li>Provided support to students taking diverse GIS courses</li>
+                <li>Lab Instructor for Introductory GIS course (GEOG 2050)</li>
+              </ul>
+            </div>
+
+            <div class="cv-item">
+              <h4>Software Engineer I (DEVOPS)</h4>
+              <p class="company">Union Systems Limited</p>
+              <p class="date">April 2022 - June 2023</p>
+              <ul>
+                <li>
+                  Setting up of Report Servers for User Acceptance Testing (UAT)
+                  and Production
+                </li>
+                <li>
+                  Deployment of software using containerization using CI/CD
+                </li>
+                <li>Maintenance of deployment infrastructure</li>
+                <li>Technical support and troubleshooting</li>
+              </ul>
+            </div>
+
+            <div class="cv-item">
+              <h4>Programme Assistant</h4>
+              <p class="company">
+                Early Career Ocean Professional (UN OCEAN DECADE)
+              </p>
+              <p class="date">August 2020 - Present</p>
+              <ul>
+                <li>
+                  Arranged official meetings and managed activities of the
+                  Africa regional node
+                </li>
+                <li>
+                  Handled official communications and fostered effective
+                  communication between networks
+                </li>
+                <li>Coordinated regional activities and initiatives</li>
+              </ul>
+            </div>
+
+            <div class="cv-item">
+              <h4>Undergraduate Intern</h4>
+              <p class="company">A.A Orogbangba & Co</p>
+              <p class="date">May 2018 - August 2018</p>
+              <ul>
+                <li>Created transverse plots for land surveying using CAD</li>
+                <li>
+                  Assisted in taking land measurements with surveying tools
+                </li>
+                <li>Gained hands-on experience in surveying and mapping</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Publications -->
+          <div class="cv-section">
+            <h3>📚 Peer-Reviewed Publications</h3>
+            <div class="cv-item">
+              <ul>
+                <li>
+                  <strong>Makanju AO, Ndukauba PC, Nwajiaku LC, et al.</strong>
+                  Unequal aging in Nigeria: evidence on pre-COVID 19.
+                  <em>Aging Community</em> 2022;4(4):19
+                </li>
+                <li>
+                  <strong>Makanju A, Uriri A, Nwajiaku L, Ogungbemi O.</strong>
+                  A cross sectional study on the socio-economic determinants of
+                  later life frailty in southwestern Nigeria.
+                  <em>Aging Community</em> 2022;4(4):20
+                </li>
+                <li>
+                  <strong>Nwajiaku, C. L., Koylu, C., Cai, J.</strong> (In
+                  preparation) Roots&Migrants: A user-centered story map
+                  application for teaching and learning historical population
+                  dynamics in the United States.
+                  <em>Cartography and Geographic Information Science</em>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Conference Presentations -->
+          <div class="cv-section">
+            <h3>🎤 Conference Presentations</h3>
+            <div class="cv-item">
+              <ul>
+                <li>
+                  <strong>NACIS Conference</strong> (October 2024) - Tacoma,
+                  Washington<br />
+                  "Roots&Migrants: A user-centered story map application for
+                  teaching and learning historical population dynamics in the
+                  United States"
+                </li>
+                <li>
+                  <strong>AAG Conference</strong> (March 2025) - Detroit,
+                  Michigan<br />
+                  "Roots&Migrants: A user-centered story map application for
+                  teaching and learning historical population dynamics in the
+                  United States"
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Technical Skills -->
+          <div class="cv-section">
+            <h3>🛠️ Technical Skills</h3>
+            <div class="cv-item">
+              <h4>GIS & Mapping Software</h4>
+              <div class="skills-list">
+                <span class="skill-tag">ArcGIS Pro</span>
+                <span class="skill-tag">ArcGIS Online</span>
+                <span class="skill-tag">QGIS</span>
+                <span class="skill-tag">ENVI</span>
+                <span class="skill-tag">JOSM Editor</span>
+                <span class="skill-tag">AutoCAD</span>
+              </div>
+            </div>
+            <div class="cv-item">
+              <h4>Programming & Development</h4>
+              <div class="skills-list">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">Linux</span>
+                <span class="skill-tag">DBMS</span>
+              </div>
+            </div>
+            <div class="cv-item">
+              <h4>Data & Analysis Tools</h4>
+              <div class="skills-list">
+                <span class="skill-tag">Excel</span>
+                <span class="skill-tag">Pentaho Data Integration</span>
+                <span class="skill-tag">Jasper Report Server</span>
+                <span class="skill-tag">Microsoft Office</span>
+                <span class="skill-tag">Google Suite</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Awards & Honors -->
+          <div class="cv-section">
+            <h3>🏆 Awards & Honors</h3>
+            <div class="cv-item">
+              <ul>
+                <li>
+                  <strong>NACIS Conference Travel Grant</strong> - $500 (2024)
+                </li>
+                <li>
+                  <strong
+                    >Endowment Scholarship for First Class Students</strong
+                  >
+                  - University of Lagos (2017)
+                </li>
+                <li>
+                  <strong
+                    >Nigerian Stock Exchange Essay Scholarship Award</strong
+                  >
+                  - Winner (2015)
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Professional Affiliations -->
+          <div class="cv-section">
+            <h3>🤝 Professional Affiliations</h3>
+            <div class="cv-item">
+              <div class="skills-list">
+                <span class="skill-tag">YALI Member</span>
+                <span class="skill-tag">IPED Member</span>
+                <span class="skill-tag">CIEHS Associate</span>
+                <span class="skill-tag">Women in Data Africa</span>
+                <span class="skill-tag">Youth Mappers</span>
+                <span class="skill-tag">Africa Geoportal Community</span>
+                <span class="skill-tag">African Women in GIS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Download Section -->
+          <div
+            style="
+              text-align: center;
+              padding-top: 20px;
+              border-top: 1px solid #eee;
+            "
+          >
+            <a href="cv.pdf" download class="cv-download-btn">
+              📄 Download PDF Version
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Loretta Nwajiaku. Designed and built with ❤️</p>
+    </footer>
+
+    <script>
+      // Navigation
+      const navLinks = document.querySelectorAll(".nav-links a");
+      const navToggle = document.querySelector(".nav-toggle");
+      const navLinksContainer = document.querySelector(".nav-links");
+
+      navLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute("href");
+          const targetSection = document.querySelector(targetId);
+
+          if (targetSection) {
+            navLinks.forEach((l) => l.classList.remove("active"));
+            link.classList.add("active");
+
+            targetSection.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+
+            navLinksContainer.classList.remove("active");
+          }
+        });
+      });
+
+      navToggle.addEventListener("click", () => {
+        navLinksContainer.classList.toggle("active");
+      });
+
+      // Profile image upload
+      document
+        .getElementById("imageUpload")
+        .addEventListener("change", function (e) {
+          const file = e.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              const profileImage = document.getElementById("profileImage");
+              profileImage.innerHTML = `<img src="${e.target.result}" alt="Profile Picture"><input type="file" id="imageUpload" accept="image/*">`;
+
+              document
+                .getElementById("imageUpload")
+                .addEventListener("change", arguments.callee);
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+
+      // Scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".fade-in").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Update active nav on scroll
+      window.addEventListener("scroll", () => {
+        const sections = document.querySelectorAll("section");
+        const scrollPos = window.scrollY + 200;
+
+        sections.forEach((section) => {
+          const top = section.offsetTop;
+          const height = section.offsetHeight;
+          const id = section.getAttribute("id");
+
+          if (scrollPos >= top && scrollPos < top + height) {
+            navLinks.forEach((link) => {
+              link.classList.remove("active");
+              if (link.getAttribute("href") === `#${id}`) {
+                link.classList.add("active");
+              }
+            });
+          }
+        });
+      });
+
+      // CV Modal functions
+      function openCV(e) {
+        if (e) e.preventDefault();
+        document.getElementById("cvModal").classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeCV() {
+        document.getElementById("cvModal").classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+
+      // Close modal when clicking outside
+      document
+        .getElementById("cvModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeCV();
+          }
+        });
+
+      // Close modal with Escape key
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeCV();
+        }
+      });
+
+      // FIXED CAROUSEL FUNCTIONALITY
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".carousel-slide");
+      const totalSlides = slides.length;
+      let slidesToShow = 1;
+
+      // Calculate slides to show based on container width
+      function updateSlidesToShow() {
+        const container = document.querySelector(".carousel-container");
+        if (!container) return;
+
+        const containerWidth = container.offsetWidth;
+        const slideWidth = 280; // Fixed width from CSS
+        const gap = 25; // Gap from CSS
+
+        if (window.innerWidth <= 768) {
+          slidesToShow = 1;
+        } else {
+          // Calculate how many slides fit in the container
+          slidesToShow = Math.floor(
+            (containerWidth + gap) / (slideWidth + gap)
+          );
+          slidesToShow = Math.max(1, Math.min(slidesToShow, totalSlides));
+        }
+      }
+
+      function updateCarousel() {
+        const wrapper = document.getElementById("carouselWrapper");
+        if (!wrapper) return;
+
+        const slideWidth = 280; // Fixed width
+        const gap = 25;
+        const moveDistance = slideWidth + gap;
+        const translateX = -(currentSlide * moveDistance);
+
+        wrapper.style.transform = `translateX(${translateX}px)`;
+        updateDots();
+      }
+
+      function changeSlide(direction) {
+        const maxSlide = Math.max(0, totalSlides - slidesToShow);
+        currentSlide += direction;
+
+        if (currentSlide < 0) {
+          currentSlide = maxSlide;
+        } else if (currentSlide > maxSlide) {
+          currentSlide = 0;
+        }
+
+        updateCarousel();
+      }
+
+      function goToSlide(index) {
+        currentSlide = index;
+        updateCarousel();
+      }
+
+      function createDots() {
+        const dotsContainer = document.getElementById("carouselDots");
+        if (!dotsContainer) return;
+
+        const maxSlide = Math.max(0, totalSlides - slidesToShow);
+        dotsContainer.innerHTML = "";
+
+        for (let i = 0; i <= maxSlide; i++) {
+          const dot = document.createElement("div");
+          dot.className = "dot";
+          if (i === 0) dot.classList.add("active");
+          dot.addEventListener("click", () => goToSlide(i));
+          dotsContainer.appendChild(dot);
+        }
+      }
+
+      function updateDots() {
+        const dots = document.querySelectorAll(".dot");
+        dots.forEach((dot, index) => {
+          dot.classList.toggle("active", index === currentSlide);
+        });
+      }
+
+      // Touch/swipe support
+      let startX = 0;
+      let isDragging = false;
+
+      const carouselContainer = document.querySelector(".carousel-container");
+
+      if (carouselContainer) {
+        // Touch events
+        carouselContainer.addEventListener("touchstart", (e) => {
+          startX = e.touches[0].clientX;
+          isDragging = true;
+        });
+
+        carouselContainer.addEventListener("touchmove", (e) => {
+          e.preventDefault();
+        });
+
+        carouselContainer.addEventListener("touchend", (e) => {
+          if (!isDragging) return;
+
+          const endX = e.changedTouches[0].clientX;
+          const diffX = startX - endX;
+
+          if (Math.abs(diffX) > 50) {
+            if (diffX > 0) {
+              changeSlide(1);
+            } else {
+              changeSlide(-1);
+            }
+          }
+
+          isDragging = false;
+        });
+
+        // Mouse events
+        carouselContainer.addEventListener("mousedown", (e) => {
+          startX = e.clientX;
+          isDragging = true;
+          carouselContainer.style.cursor = "grabbing";
+          e.preventDefault();
+        });
+
+        document.addEventListener("mousemove", (e) => {
+          if (!isDragging) return;
+          e.preventDefault();
+        });
+
+        document.addEventListener("mouseup", (e) => {
+          if (!isDragging) return;
+
+          const endX = e.clientX;
+          const diffX = startX - endX;
+
+          if (Math.abs(diffX) > 50) {
+            if (diffX > 0) {
+              changeSlide(1);
+            } else {
+              changeSlide(-1);
+            }
+          }
+
+          isDragging = false;
+          carouselContainer.style.cursor = "grab";
+        });
+      }
+
+      // Initialize carousel
+      function initCarousel() {
+        if (slides.length > 0) {
+          updateSlidesToShow();
+          createDots();
+          updateCarousel();
+        }
+      }
+
+      // Initialize when DOM is ready
+      document.addEventListener("DOMContentLoaded", initCarousel);
+
+      // Update on resize
+      window.addEventListener("resize", () => {
+        updateSlidesToShow();
+        createDots();
+        updateCarousel();
+      });
+
+      // Keyboard navigation
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") {
+          changeSlide(-1);
+        } else if (e.key === "ArrowRight") {
+          changeSlide(1);
+        }
+      });
+    </script>
+  </body>
+</html>
